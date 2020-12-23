@@ -60,11 +60,12 @@ class Game{
                          fill("black");
                          textSize(25);
                          text(allPlayers[plr].name ,x-25,y+25);
-
+                         
 
                      }
-
-
+                     fill("white");
+                     text("player1 :"+" "+allPlayers.player1.score,50,50);
+                     text("player2 :"+" "+allPlayers.player2.score,50,70);
 
                  }
 
@@ -101,7 +102,13 @@ class Game{
                  }
 
                   if (player.index !== null) {
-                    
+                      for(var i = 0;i < fruitGroup.length;i++){
+                          if(fruitGroup.get(i).isTouching(players)){
+                          fruitGroup.get(i).destroy();
+                          player.score += 1;
+                          player.update();
+                          }
+                      }
                   }
 
 
@@ -115,4 +122,5 @@ class Game{
     end(){
        console.log("Game Ended");
     }
+    
 }
